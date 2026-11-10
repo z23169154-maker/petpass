@@ -99,7 +99,7 @@ section{padding-block:28px}
 .pt .ic{width:46px;height:46px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;margin-bottom:16px}
 .pt .ic svg{width:22px;height:22px;stroke:var(--accent-ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .pt p{color:var(--ink2);font-size:14px;margin-top:6px}
-.plans{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px;align-items:stretch}
+.plans{display:grid;grid-template-columns:1fr 1.35fr;gap:12px;align-items:stretch;max-width:900px}
 .plans>*{min-width:0}
 .plan{display:flex;flex-direction:column;gap:16px;border-radius:30px;padding:26px}
 .plan.main{background:var(--navy);color:var(--on-navy)}
@@ -140,7 +140,7 @@ footer button{background:none;border:0;padding:0;font:inherit;color:inherit;text
 .sheet-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
 .x{background:var(--surface);border:0;border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer;color:var(--ink);flex:0 0 40px}
 .sum{display:flex;justify-content:space-between;gap:12px;background:var(--navy);color:var(--on-navy);border-radius:22px;padding:16px 18px;margin-block:18px;font-weight:600}
-.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+.pick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px}
 .pick button{border:2px solid transparent;background:var(--surface);color:var(--ink);border-radius:18px;padding:12px 8px;font:600 15px/1.2 var(--font);cursor:pointer;text-align:center;min-width:0}
 .pick button small{display:block;font-weight:500;font-size:12px;color:var(--ink2);margin-top:4px}
 .pick button.on{border-color:var(--accent);background:var(--accent-soft)}
@@ -164,7 +164,7 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
 .policy ul{padding-left:18px;margin:4px 0}
 .stats{position:fixed;left:max(12px,env(safe-area-inset-left,0px));top:calc(80px + env(safe-area-inset-top,0px));z-index:15;background:var(--navy);color:var(--on-navy);border-radius:18px;padding:12px 16px;font-size:13px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);max-width:calc(100% - 24px)}
 .stats b{color:var(--accent);font-size:16px;font-variant-numeric:tabular-nums}
-@media (max-width:1000px){ .plans{grid-template-columns:1fr 1fr} .plan.main{grid-column:1/-1;order:-1} }
+
 @media (max-width:900px){
   .hero,.plans{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr}
@@ -232,13 +232,13 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
   <div class="partners">
     <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z"/></svg></div><h3>Ветеринары</h3><p>Осмотры по плану и запись в одно касание</p></div>
     <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><h3>Грумеры</h3><p>Бережный первый груминг и скидки подписчикам</p></div>
-    <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg></div><h3>Передержки</h3><p>Где оставить щенка на время поездки</p></div>
+    <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg></div><h3>Передержки</h3><p>Где оставить питомца на время поездки</p></div>
     <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 21v-2a5 5 0 015-5h4a5 5 0 015 5v2"/></svg></div><h3>Кинологи</h3><p>Воспитание и социализация — особенно в первый год</p></div>
   </div>
 </div></section>
 
 <section id="plans"><div class="wrap">
-  <div class="head"><div><p class="eyebrow">Тарифы</p><h2 style="margin-top:8px">Выберите, как начать</h2><p class="muted" style="margin-top:8px">Тариф зависит от возраста питомца — как в приложении</p></div><div class="bill" role="group" aria-label="Период оплаты"><button type="button" class="on" data-bill="year">На год</button><button type="button" data-bill="month">По месяцам</button></div></div>
+  <div class="head"><div><p class="eyebrow">Тарифы</p><h2 style="margin-top:8px">Одна подписка для любого питомца</h2><p class="muted" style="margin-top:8px">Щенок, котёнок или взрослый — план ухода подстраивается под возраст</p></div><div class="bill" role="group" aria-label="Период оплаты"><button type="button" class="on" data-bill="year">На год</button><button type="button" data-bill="month">По месяцам</button></div></div>
   <div class="plans">
     <div class="card plan">
       <h3>Базовый</h3>
@@ -247,20 +247,13 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
       <button class="btn btn-ghost btn-wide" data-buy="free">Начать бесплатно</button>
     </div>
     <div class="plan main">
-      <span class="pbadge">Для щенков и котят до года</span>
-      <h3>Первый год</h3>
-      <div class="price"><span id="planPrice">7 900 ₽</span> <small id="planPer">/ год</small></div>
-      <p class="muted" id="planNote">4 месяца в подарок по сравнению с помесячной оплатой</p>
-      <ul class="ticks"><li>Всё из «Базового»</li><li>Осмотр у проверенного ветеринара со скидкой 15%</li><li>Скидки у ветеринаров, грумеров и других партнёров</li><li>Приоритетная запись в свободные часы</li><li>Первый месяц — бесплатно от заводчика</li></ul>
-      <div class="payback"><b>Дешевле, чем по месяцам:</b> 7 900 ₽ вместо 11 880 ₽ — плюс осмотр −15% и скидки партнёров весь год.</div>
-      <button class="btn btn-primary btn-wide" data-buy="year" id="planBtn">Оформить за 7 900 ₽</button>
-    </div>
-    <div class="card plan">
-      <h3>Забота</h3>
-      <div class="price"><span id="carePrice">4 900 ₽</span> <small id="carePer">/ год</small></div>
-      <p class="muted">Для собак и кошек старше года</p>
-      <ul class="ticks"><li>Всё из «Базового»</li><li>Ежегодный чек-ап или прививка у проверенного ветеринара</li><li>Скидки у ветеринаров, грумеров и других партнёров</li></ul>
-      <button class="btn btn-ghost btn-wide" data-buy="care" id="careBtn">Оформить за 4 900 ₽</button>
+      <span class="pbadge">Ранняя бронь −15% до запуска</span>
+      <h3>Подписка PetPass</h3>
+      <div class="price"><span id="planPrice">6 900 ₽</span> <small id="planPer">/ год</small></div>
+      <p class="muted" id="planNote">2 месяца в подарок по сравнению с помесячной оплатой</p>
+      <ul class="ticks"><li>Всё из «Базового»</li><li>Осмотр у проверенного ветеринара со скидкой 15%</li><li>Скидки у ветеринаров, грумеров и других партнёров</li><li>Приоритетная запись в свободные часы</li><li>Для щенков, котят и взрослых питомцев</li></ul>
+      <div class="payback"><b>Ранняя бронь:</b> <span id="earlyNote">5 890 ₽ за год вместо 6 900 ₽</span>, если оформить до запуска пилота. Не стартуем в декабре — вернём деньги.</div>
+      <button class="btn btn-primary btn-wide" data-buy="year" id="planBtn">Забронировать за 5 890 ₽</button>
     </div>
   </div>
 </div></section>
@@ -268,9 +261,9 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
 <section><div class="wrap">
   <div class="head"><div><p class="eyebrow">Вопросы</p><h2 style="margin-top:8px">Коротко о главном</h2></div></div>
   <div class="faq">
-    <details><summary>Когда начнётся сервис?</summary><p>Пилот стартует в Санкт-Петербурге в ноябре 2026. Забронировавшие получат доступ первыми.</p></details>
+    <details><summary>Когда начнётся сервис?</summary><p>Пилот стартует в Санкт-Петербурге в декабре 2026. Забронировавшие получат доступ первыми и цену со скидкой 15%.</p></details>
     <details><summary>Питомец не из питомника или заводчик не в PetPass?</summary><p>Заведите карточку сами — план ухода построится по виду, породе и дате рождения. Заводчика тоже можем пригласить.</p></details>
-    <details><summary>Подходит для взрослого питомца или кошки?</summary><p>Да. Для собак и кошек старше года — тариф «Забота»: ежегодный чек-ап или прививка и скидки у партнёров. Тариф «Первый год» — для щенков и котят: в первый год больше всего визитов и вопросов.</p></details>
+    <details><summary>Подходит для взрослого питомца или кошки?</summary><p>Да. Подписка одна для любого питомца — щенка, котёнка, взрослой собаки или кошки. План ухода, напоминания и скидки партнёров подстраиваются под вид и возраст.</p></details>
   </div>
 </div></section>
 
@@ -283,46 +276,45 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
 </main>
 <footer><div class="wrap">PetPass · проект Стартап Академии Сколково, 2026 · Связаться: <a href="https://t.me/zgusarova" target="_blank" rel="noopener" style="color:inherit">Telegram @zgusarova</a></div></footer>
 
-<div class="dock"><div class="pill"><span>Подписка — от 490 ₽/мес</span><button class="btn btn-primary" data-buy="year">Забронировать</button></div></div>
+<div class="dock"><div class="pill"><span>Подписка — 690 ₽/мес</span><button class="btn btn-primary" data-buy="year">Забронировать</button></div></div>
 
 <div class="sheet-bg" id="sheet" hidden>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <div class="sheet-head"><div><p class="eyebrow">Бронь в пилоте</p><h3 id="sheetTitle" style="font-size:26px;margin-top:6px">Выберите тариф</h3></div><button class="x" id="closeSheet" aria-label="Закрыть">×</button></div>
     <div class="pick" role="radiogroup" aria-label="Тариф">
       <button type="button" role="radio" data-t="free">Базовый<small>0 ₽</small></button>
-      <button type="button" role="radio" data-t="first">Первый год<small>до года</small></button>
-      <button type="button" role="radio" data-t="care">Забота<small>старше года</small></button>
+      <button type="button" role="radio" data-t="sub">Подписка<small>6 900 ₽ / год</small></button>
     </div>
     <div class="bill sbill" id="sheetBill" role="group" aria-label="Период оплаты"><button type="button" data-sb="year">За год</button><button type="button" data-sb="month">По месяцам</button></div>
-    <div class="sum"><span id="sumName">PetPass «Первый год», 12 месяцев</span><span id="sumPrice">7 900 ₽</span></div>
-    <p class="muted">Пилот стартует в Санкт-Петербурге. Сейчас мы проверяем спрос, поэтому оплату не принимаем.</p>
-    <p style="margin-top:12px">Хотите место в пилоте? Напишите основательнице PetPass в Telegram, какой тариф выбрали, — мы свяжемся с вами первыми и пришлём ссылку на оплату, когда откроем подписку.</p>
+    <div class="sum"><span id="sumName">Подписка PetPass, 12 месяцев</span><span id="sumPrice">5 890 ₽</span></div>
+    <p class="muted" id="sumOld" style="margin-top:-8px">Ранняя бронь: −15% до запуска</p>
+    <p class="muted">Пилот стартует в Санкт-Петербурге в декабре. Если не стартуем — вернём деньги полностью.</p>
+    <p style="margin-top:12px">Напишите основательнице PetPass в Telegram — пришлём реквизиты для оплаты ранней брони и чек.</p>
     <a class="btn btn-primary btn-wide" style="margin-top:20px;text-decoration:none" id="tgLink" href="https://t.me/zgusarova" target="_blank" rel="noopener">Написать в Telegram</a>
     <button class="btn btn-ghost btn-wide" style="margin-top:10px" id="okSheet">Закрыть</button>
   </div>
 </div>
 <script>
 const $=s=>document.querySelector(s);
-const T={free:{name:"Базовый",year:["PetPass «Базовый»","0 ₽"],month:["PetPass «Базовый»","0 ₽"]},
- first:{name:"Первый год",year:["PetPass «Первый год», 12 месяцев","7 900 ₽"],month:["PetPass «Первый год», помесячно","990 ₽ / мес"]},
- care:{name:"Забота",year:["PetPass «Забота», 12 месяцев","4 900 ₽"],month:["PetPass «Забота», помесячно","490 ₽ / мес"]}};
-let billing="year",lastFocus=null,cur={t:"first",p:"year"};
-function renderSheet(){const d=T[cur.t],v=d[cur.p];$("#sumName").textContent=v[0];$("#sumPrice").textContent=v[1];
+const T={free:{name:"Базовый",year:["PetPass «Базовый»","0 ₽",""],month:["PetPass «Базовый»","0 ₽",""]},
+ sub:{name:"Подписка PetPass",year:["Подписка PetPass, 12 месяцев","5 890 ₽","Ранняя бронь: −15%, обычная цена 6 900 ₽ за год"],month:["Подписка PetPass, помесячно","590 ₽ / мес","Ранняя бронь: −15%, обычная цена 690 ₽ в месяц"]}};
+let billing="year",lastFocus=null,cur={t:"sub",p:"year"};
+function renderSheet(){const d=T[cur.t],v=d[cur.p];$("#sumName").textContent=v[0];$("#sumPrice").textContent=v[1];$("#sumOld").textContent=v[2];$("#sumOld").hidden=!v[2];
  document.querySelectorAll("[data-t]").forEach(b=>{const on=b.dataset.t===cur.t;b.classList.toggle("on",on);b.setAttribute("aria-checked",on);});
  $("#sheetBill").hidden=cur.t==="free";document.querySelectorAll("[data-sb]").forEach(b=>b.classList.toggle("on",b.dataset.sb===cur.p));
- const msg="Здравствуйте! Хочу место в пилоте PetPass, тариф «"+d.name+"»"+(cur.t==="free"?"":(cur.p==="year"?", оплата за год":", помесячно"))+".";
+ const msg=cur.t==="free"?"Здравствуйте! Хочу попробовать PetPass бесплатно, тариф «Базовый».":"Здравствуйте! Хочу раннюю бронь PetPass: "+(cur.p==="year"?"5 890 ₽ за год":"590 ₽ в месяц")+". Пришлите, пожалуйста, реквизиты.";
  $("#tgLink").href="https://t.me/zgusarova?text="+encodeURIComponent(msg);}
 function openSheet(t){lastFocus=document.activeElement;cur={t:t,p:billing};renderSheet();$("#sheet").hidden=false;setTimeout(()=>{const b=document.querySelector('[data-t="'+cur.t+'"]');if(b)b.focus();},30);}
 document.querySelectorAll("[data-t]").forEach(b=>b.addEventListener("click",()=>{cur.t=b.dataset.t;renderSheet();}));
 document.querySelectorAll("[data-sb]").forEach(b=>b.addEventListener("click",()=>{cur.p=b.dataset.sb;renderSheet();}));
 function closeSheet(){$("#sheet").hidden=true;if(lastFocus)lastFocus.focus();}
-document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.buy;openSheet(k==="care"?"care":k==="free"?"free":"first");}));
+document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.buy;openSheet(k==="free"?"free":"sub");}));
 document.querySelectorAll("[data-bill]").forEach(b=>b.addEventListener("click",()=>{
   billing=b.dataset.bill;document.querySelectorAll("[data-bill]").forEach(x=>x.classList.toggle("on",x===b));const m=billing==="month";
-  $("#planPrice").textContent=m?"990 ₽":"7 900 ₽";$("#planPer").textContent=m?"/ мес":"/ год";
-  $("#planNote").textContent=m?"Можно отменить в любой момент. Скидка на осмотр — с третьего месяца":"4 месяца в подарок по сравнению с помесячной оплатой";
-  $("#planBtn").textContent=m?"Оформить за 990 ₽":"Оформить за 7 900 ₽";
-  $("#carePrice").textContent=m?"490 ₽":"4 900 ₽";$("#carePer").textContent=m?"/ мес":"/ год";$("#careBtn").textContent=m?"Оформить за 490 ₽":"Оформить за 4 900 ₽";}));
+  $("#planPrice").textContent=m?"690 ₽":"6 900 ₽";$("#planPer").textContent=m?"/ мес":"/ год";
+  $("#planNote").textContent=m?"Можно отменить в любой момент":"2 месяца в подарок по сравнению с помесячной оплатой";
+  $("#earlyNote").textContent=m?"590 ₽ в месяц вместо 690 ₽":"5 890 ₽ за год вместо 6 900 ₽";
+  $("#planBtn").textContent=m?"Забронировать за 590 ₽":"Забронировать за 5 890 ₽";}));
 $("#closeSheet").addEventListener("click",closeSheet);$("#okSheet").addEventListener("click",closeSheet);
 $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#sheet").hidden)closeSheet();});
