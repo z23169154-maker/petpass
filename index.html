@@ -281,7 +281,7 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
   </div>
 </div></section>
 </main>
-<footer><div class="wrap">PetPass · проект Стартап Академии Сколково, 2026 · Связаться: <a href="https://t.me/curly_zzoe" target="_blank" rel="noopener" style="color:inherit">Telegram @curly_zzoe</a></div></footer>
+<footer><div class="wrap">PetPass · проект Стартап Академии Сколково, 2026 · Связаться: <a href="https://t.me/zgusarova" target="_blank" rel="noopener" style="color:inherit">Telegram @zgusarova</a></div></footer>
 
 <div class="dock"><div class="pill"><span>Подписка — от 490 ₽/мес</span><button class="btn btn-primary" data-buy="year">Забронировать</button></div></div>
 
@@ -297,7 +297,7 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
     <div class="sum"><span id="sumName">PetPass «Первый год», 12 месяцев</span><span id="sumPrice">7 900 ₽</span></div>
     <p class="muted">Пилот стартует в Санкт-Петербурге. Сейчас мы проверяем спрос, поэтому оплату не принимаем.</p>
     <p style="margin-top:12px">Хотите место в пилоте? Напишите основательнице PetPass в Telegram, какой тариф выбрали, — мы свяжемся с вами первыми и пришлём ссылку на оплату, когда откроем подписку.</p>
-    <a class="btn btn-primary btn-wide" style="margin-top:20px;text-decoration:none" id="tgLink" href="https://t.me/curly_zzoe" target="_blank" rel="noopener">Написать в Telegram</a>
+    <a class="btn btn-primary btn-wide" style="margin-top:20px;text-decoration:none" id="tgLink" href="https://t.me/zgusarova" target="_blank" rel="noopener">Написать в Telegram</a>
     <button class="btn btn-ghost btn-wide" style="margin-top:10px" id="okSheet">Закрыть</button>
   </div>
 </div>
@@ -311,7 +311,7 @@ function renderSheet(){const d=T[cur.t],v=d[cur.p];$("#sumName").textContent=v[0
  document.querySelectorAll("[data-t]").forEach(b=>{const on=b.dataset.t===cur.t;b.classList.toggle("on",on);b.setAttribute("aria-checked",on);});
  $("#sheetBill").hidden=cur.t==="free";document.querySelectorAll("[data-sb]").forEach(b=>b.classList.toggle("on",b.dataset.sb===cur.p));
  const msg="Здравствуйте! Хочу место в пилоте PetPass, тариф «"+d.name+"»"+(cur.t==="free"?"":(cur.p==="year"?", оплата за год":", помесячно"))+".";
- $("#tgLink").href="https://t.me/curly_zzoe?text="+encodeURIComponent(msg);}
+ $("#tgLink").href="https://t.me/zgusarova?text="+encodeURIComponent(msg);}
 function openSheet(t){lastFocus=document.activeElement;cur={t:t,p:billing};renderSheet();$("#sheet").hidden=false;setTimeout(()=>{const b=document.querySelector('[data-t="'+cur.t+'"]');if(b)b.focus();},30);}
 document.querySelectorAll("[data-t]").forEach(b=>b.addEventListener("click",()=>{cur.t=b.dataset.t;renderSheet();}));
 document.querySelectorAll("[data-sb]").forEach(b=>b.addEventListener("click",()=>{cur.p=b.dataset.sb;renderSheet();}));
