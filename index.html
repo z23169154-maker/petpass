@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="PetPass — план ухода за щенком, котёнком или взрослым питомцем, напоминания и проверенные специалисты рядом.">
+<meta property="og:title" content="PetPass — забота о питомце по плану"><meta property="og:description" content="План ухода по виду, породе и возрасту, напоминания и проверенные ветеринары и грумеры рядом. Пилот в Петербурге.">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+<title>PetPass — забота о питомце</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: same look as the PetPass app — soft grey ground, white 26px cards, tight grotesk headings, one orange accent, black cards, frosted glass tiles, pill buttons, floating pill CTA */
+:root{
+  --bg:#ECEAE7; --app:#F4F4F2; --surface:#FFFFFF; --soft:#F0EFEC; --ink:#141414; --ink2:#6E6E6A; --line:#E3E2DE;
+  --accent:#FF6B2C; --accent-ink:#D2480E; --accent-soft:#FFE6D9; --on-accent:#FFFFFF; --navy:#141414; --on-navy:#FFFFFF; --navy2:#262626; --muted-navy:#B5B5B0;
+  --glass:rgba(255,255,255,.55); --glass-line:rgba(255,255,255,.8); --hero:#E6E4E0; --ok:#2F7D4F; --ok-soft:#E2F2E8;
+  --font:"Onest","Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C0C0C; --app:#151515; --surface:#1F1F1F; --soft:#262626; --ink:#F4F4F2; --ink2:#A6A6A1; --line:#2F2F2F;
+  --accent:#FF7A3D; --accent-ink:#FF9A6A; --accent-soft:#3A2418; --on-accent:#141414; --navy:#262626; --on-navy:#FFFFFF; --navy2:#333333; --muted-navy:#B5B5B0;
+  --glass:rgba(30,30,30,.55); --glass-line:rgba(255,255,255,.14); --hero:#232323; --ok:#5FBF85; --ok-soft:#1C3125; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C0C0C; --app:#151515; --surface:#1F1F1F; --soft:#262626; --ink:#F4F4F2; --ink2:#A6A6A1; --line:#2F2F2F;
+  --accent:#FF7A3D; --accent-ink:#FF9A6A; --accent-soft:#3A2418; --on-accent:#141414; --navy:#262626; --on-navy:#FFFFFF; --navy2:#333333; --muted-navy:#B5B5B0;
+  --glass:rgba(30,30,30,.55); --glass-line:rgba(255,255,255,.14); --hero:#232323; --ok:#5FBF85; --ok-soft:#1C3125; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.04em;line-height:1.02;font-weight:700}
+h1{font-size:clamp(40px,6.4vw,72px)}
+h2{font-size:clamp(30px,4.4vw,48px)}
+h3{font-size:21px;letter-spacing:-.03em;line-height:1.15}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:600;color:var(--ink2)}
+.muted{color:var(--ink2)}
+.card{background:var(--surface);border-radius:26px;padding:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:99px;padding:16px 24px;font:600 16px/1.2 var(--font);cursor:pointer;text-decoration:none;transition:transform .15s,background .15s}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:0 12px 26px -12px var(--accent)}
+.btn-dark{background:var(--ink);color:var(--app)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-wide{width:100%}
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;padding-block:12px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--glass-line);border-radius:99px;padding:6px 6px 6px 8px;box-shadow:0 10px 30px -18px rgba(0,0,0,.35)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+.logo i{width:38px;height:38px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+.logo svg{width:20px;height:20px;fill:var(--accent)}
+.bar .btn{padding:11px 18px;font-size:15px}
+section{padding-block:28px}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:stretch;padding-top:8px}
+.hero>*{min-width:0}
+.hero-copy{background:var(--app);border-radius:34px;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:8px 13px;border-radius:99px;background:var(--surface);white-space:nowrap}
+.chip .d{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--ink2);max-width:36ch;margin-top:18px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+/* phone mock */
+.phone{width:100%;max-width:380px;margin-inline:auto;background:#0B0B0B;border-radius:52px;padding:10px;box-shadow:0 40px 90px -30px rgba(0,0,0,.45),inset 0 0 0 2px #333}
+.screen{background:var(--app);border-radius:43px;overflow:hidden;padding:14px 14px 16px;display:flex;flex-direction:column;gap:10px}
+.s-top{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 2px}
+.s-top b{font-size:26px;letter-spacing:-.04em}
+.s-top span{font-size:12px;color:var(--ink2)}
+.pet-hero{position:relative;height:290px;border-radius:30px;background:radial-gradient(120% 90% at 50% 20%,var(--surface) 0%,var(--hero) 70%);overflow:hidden}
+.pet-hero svg.pet{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:210px;height:210px}
+.tiles{position:absolute;left:8px;right:8px;bottom:8px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.glass{background:var(--glass);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);border:1px solid var(--glass-line);border-radius:22px;padding:10px 12px}
+.glass small{font-size:11px;color:var(--ink2);display:block}
+.glass b{font-size:26px;font-weight:600;letter-spacing:-.05em;line-height:1.05;font-variant-numeric:tabular-nums}
+.glass b em{font-style:normal;font-size:13px;font-weight:500;letter-spacing:0;margin-left:2px}
+.task{display:flex;align-items:center;gap:10px;background:var(--surface);border-radius:20px;padding:11px 12px}
+.task .ic{width:34px;height:34px;border-radius:50%;background:var(--soft);display:grid;place-items:center;flex:0 0 34px}
+.task .ic svg{width:17px;height:17px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.task div{flex:1;min-width:0}
+.task b{display:block;font-size:14px;font-weight:600}
+.task span{font-size:12px;color:var(--ink2)}
+.tag{font-size:11px;font-weight:600;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.t-now{background:var(--accent);color:#fff}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.from{background:var(--accent);color:#fff;border-radius:20px;padding:12px 14px;font-size:13px}
+.from b{display:block;font-size:12px;opacity:.85;font-weight:600;margin-bottom:2px}
+/* sections */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid3>*{min-width:0}
+.quote{display:flex;flex-direction:column;gap:18px}
+.quote q{font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.3;quotes:"«" "»"}
+.quote small{color:var(--ink2);font-size:14px;margin-top:auto}
+.navy{background:var(--navy);color:var(--on-navy);border-radius:34px;padding:clamp(24px,4vw,44px)}
+.navy .eyebrow{color:var(--muted-navy)}
+.step{background:var(--navy2);border-radius:26px;padding:22px}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px;margin-bottom:18px}
+.step p{color:var(--muted-navy);margin-top:8px;font-size:15px}
+.partners{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.partners>*{min-width:0}
+.pt .ic{width:46px;height:46px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;margin-bottom:16px}
+.pt .ic svg{width:22px;height:22px;stroke:var(--accent-ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pt p{color:var(--ink2);font-size:14px;margin-top:6px}
+.plans{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px;align-items:stretch}
+.plans>*{min-width:0}
+.plan{display:flex;flex-direction:column;gap:16px;border-radius:30px;padding:26px}
+.plan.main{background:var(--navy);color:var(--on-navy)}
+.plan.main .muted{color:var(--muted-navy)}
+.price{font-size:52px;font-weight:600;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.price small{font-size:16px;font-weight:500;letter-spacing:0;opacity:.7}
+.pbadge{align-self:flex-start;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:6px 12px;border-radius:99px}
+ul.ticks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.ticks li{display:flex;gap:10px;font-size:15px}
+ul.ticks li::before{content:"";flex:0 0 20px;height:20px;margin-top:1px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.plan .btn{margin-top:auto}
+.bill{display:flex;background:var(--surface);border-radius:99px;padding:4px;gap:4px;min-width:260px}
+.bill button{flex:1;border:0;background:none;border-radius:99px;padding:10px 16px;font:600 14px var(--font);color:var(--ink2);cursor:pointer}
+.bill button.on{background:var(--ink);color:var(--app)}
+.payback{background:var(--navy2);border-radius:20px;padding:12px 14px;font-size:14px;color:var(--muted-navy)}
+.payback b{color:var(--on-navy)}
+.faq{display:grid;gap:8px}
+details{background:var(--surface);border-radius:22px;padding:18px 22px}
+summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--ink2)}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink2);margin-top:10px}
+.final{background:var(--accent);color:#fff;border-radius:34px;padding:clamp(26px,4vw,44px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.final p{opacity:.9;margin-top:10px}
+.final .btn{background:#141414;color:#fff}
+footer{padding-block:20px 120px;color:var(--ink2);font-size:13px}
+footer button{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+/* floating pill CTA (like the app nav) */
+.dock{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:6;display:flex;justify-content:center;padding-inline:16px;pointer-events:none}
+.dock .pill{pointer-events:auto;display:flex;align-items:center;gap:12px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--glass-line);border-radius:99px;padding:6px 6px 6px 20px;box-shadow:0 14px 34px -14px rgba(0,0,0,.35);max-width:100%}
+.dock .pill span{font-size:14px;font-weight:600;white-space:nowrap}
+.dock .btn{padding:13px 20px;font-size:15px}
+/* sheets */
+.sheet-bg{position:fixed;inset:0;z-index:20;background:rgba(10,10,10,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+.sheet{background:var(--app);color:var(--ink);border-radius:32px;width:100%;max-width:460px;max-height:calc(100% - 32px);overflow:auto;padding:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);animation:up .25s ease-out}
+@keyframes up{from{transform:translateY(30px);opacity:.4}}
+.sheet-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.x{background:var(--surface);border:0;border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer;color:var(--ink);flex:0 0 40px}
+.sum{display:flex;justify-content:space-between;gap:12px;background:var(--navy);color:var(--on-navy);border-radius:22px;padding:16px 18px;margin-block:18px;font-weight:600}
+.sum span:last-child{font-variant-numeric:tabular-nums;color:var(--accent);white-space:nowrap}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+input[type=text]{width:100%;padding:14px 16px;border-radius:18px;border:1.5px solid transparent;background:var(--surface);color:var(--ink);font:16px var(--font)}
+input[type=text]:focus{outline:none;border-color:var(--accent)}
+.field{margin-bottom:12px}
+.check{display:flex;gap:10px;font-size:13px;color:var(--ink2);font-weight:400;align-items:flex-start;margin-block:4px 10px;background:var(--surface);border-radius:18px;padding:12px 14px;cursor:pointer}
+.check input{margin-top:2px;width:18px;height:18px;flex:0 0 18px;accent-color:var(--accent)}
+.check button{background:none;border:0;padding:0;font:inherit;color:var(--accent-ink);text-decoration:underline;cursor:pointer;display:inline;text-align:left}
+.err{color:var(--accent-ink);font-size:13px;margin:6px 0 10px}
+.done{text-align:center;padding-block:10px}
+.done .ico{width:68px;height:68px;border-radius:50%;background:var(--ok);display:grid;place-items:center;margin:0 auto 16px}
+.done p{color:var(--ink2);margin-top:10px}
+.policy h4{font-size:15px;margin:16px 0 4px}
+.policy p,.policy li{font-size:14px;color:var(--ink2)}
+.policy ul{padding-left:18px;margin:4px 0}
+.stats{position:fixed;left:max(12px,env(safe-area-inset-left,0px));top:calc(80px + env(safe-area-inset-top,0px));z-index:15;background:var(--navy);color:var(--on-navy);border-radius:18px;padding:12px 16px;font-size:13px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);max-width:calc(100% - 24px)}
+.stats b{color:var(--accent);font-size:16px;font-variant-numeric:tabular-nums}
+@media (max-width:1000px){ .plans{grid-template-columns:1fr 1fr} .plan.main{grid-column:1/-1;order:-1} }
+@media (max-width:900px){
+  .hero,.plans{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+  .partners{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){ .partners{grid-template-columns:1fr} .dock .pill span{display:none} .dock .pill{padding-left:6px} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head><body>
+<header><div class="wrap"><div class="bar">
+  <a class="logo" href="#top"><i><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="16" rx="5.2" ry="4.4"/><circle cx="5.2" cy="10.2" r="2.2"/><circle cx="9.2" cy="6.2" r="2.3"/><circle cx="14.8" cy="6.2" r="2.3"/><circle cx="18.8" cy="10.2" r="2.2"/></svg></i>PetPass</a>
+  <button class="btn btn-dark" data-buy="year" id="topBuy">Забронировать</button>
+</div></div></header>
+
+<main id="top">
+<section style="padding-top:0"><div class="wrap hero">
+  <div class="hero-copy">
+    <div class="chips"><span class="chip"><span class="d"></span>Пилот в Петербурге с ноября</span><span class="chip">Для собак и кошек любого возраста</span></div>
+    <h1 style="margin-top:22px">Забота о питомце по плану — с первого дня дома</h1>
+    <p class="lead">План ухода по виду, породе и возрасту — для щенка, котёнка или взрослого питомца. PetPass напомнит, что и когда делать, и запишет к проверенным ветеринарам, грумерам и другим специалистам рядом. Взяли малыша в питомнике — план начнёт сам заводчик.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" data-buy="year">Оформить подписку</button>
+      <button class="btn btn-ghost" data-buy="free">Начать бесплатно</button>
+    </div>
+  </div>
+  <div class="phone" aria-label="Пример экрана приложения PetPass">
+    <div class="screen">
+      <div class="s-top"><b>Буся</b><span>французский бульдог · 3 мес</span></div>
+      <div class="pet-hero">
+        <svg class="pet" viewBox="0 0 300 300" aria-hidden="true"><ellipse cx="150" cy="300" rx="118" ry="78" fill="#D8A673"/><ellipse cx="150" cy="300" rx="50" ry="62" fill="#FFF4E8"/><path d="M66 138 Q34 46 58 18 Q78 6 134 96 Z" fill="#D8A673"/><path d="M76 124 Q54 56 68 34 Q84 30 122 96 Z" fill="#F0B3A2"/><path d="M234 138 Q266 46 242 18 Q222 6 166 96 Z" fill="#D8A673"/><path d="M224 124 Q246 56 232 34 Q216 30 178 96 Z" fill="#F0B3A2"/><ellipse cx="150" cy="168" rx="96" ry="86" fill="#D8A673"/><path d="M122 104 Q150 96 178 104 M116 118 Q150 110 184 118" stroke="#B9834F" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="150" cy="206" rx="58" ry="42" fill="#4A3A33"/><ellipse cx="114" cy="214" rx="30" ry="26" fill="#3F312B"/><ellipse cx="186" cy="214" rx="30" ry="26" fill="#3F312B"/><circle cx="110" cy="158" r="15" fill="#241C18"/><circle cx="190" cy="158" r="15" fill="#241C18"/><circle cx="115" cy="152" r="4.5" fill="#fff"/><circle cx="195" cy="152" r="4.5" fill="#fff"/><ellipse cx="150" cy="186" rx="20" ry="13" fill="#1A1513"/><ellipse cx="144" cy="181" rx="6" ry="3" fill="#5A4A44"/><path d="M150 199 V210 M128 214 Q150 230 172 214" stroke="#1A1513" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="150" cy="228" rx="11" ry="10" fill="#E9877E"/><path d="M150 222 V234" stroke="#C96860" stroke-width="2"/></svg>
+        <div class="tiles">
+          <div class="glass"><small>Вес</small><b>4,2<em>кг</em></b></div>
+          <div class="glass"><small>До прививки</small><b>3<em>дня</em></b></div>
+        </div>
+      </div>
+      <div class="task"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5h6M5 22l5-5M14.5 4.5l5 5-9 9-5-5z"/></svg></span><div><b>Вторая прививка</b><span>12 недель · клиника рядом</span></div><i class="tag t-now">Пора</i></div>
+      <div class="task"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></span><div><b>Первый груминг</b><span>после прививок · −15%</span></div><i class="tag t-ok">Скоро</i></div>
+      <div class="from"><b>От заводчика</b>До второй прививки гуляем только на руках, корм не меняем.</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><div><p class="eyebrow">Знакомо?</p><h2 style="margin-top:8px">Так говорят хозяева и заводчики</h2></div></div>
+  <div class="grid3">
+    <div class="card quote"><q>Могу что-то пропустить, нет централизованной системы контроля</q><small>Владелица мопса — про прививки</small></div>
+    <div class="card quote"><q>Сложно выбрать хорошую клинику, дорого, сложно записаться</q><small>Она же — про ветеринаров</small></div>
+    <div class="card quote"><q>Люди в основном ничего не запоминают</q><small>Заводчица французских бульдогов — про советы покупателям</small></div>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="navy">
+  <p class="eyebrow">Как это работает</p>
+  <h2 style="margin-top:8px">Три шага — и первый год под контролем</h2>
+  <div class="grid3" style="margin-top:22px">
+    <div class="step"><div class="n">1</div><h3>Карточка питомца</h3><p>Заведите её сами за минуту — или её заполнит заводчик: что уже сделано, корм и его рекомендации.</p></div>
+    <div class="step"><div class="n">2</div><h3>План по возрасту</h3><p>Прививки, обработки, осмотры, груминг — по виду, породе и возрасту. Щенок из питомника приходит с QR-кодом заводчика.</p></div>
+    <div class="step"><div class="n">3</div><h3>PetPass ведёт вас</h3><p>План по породе и возрасту, напоминания заранее, запись к проверенным специалистам.</p></div>
+  </div>
+</div></div></section>
+
+<section><div class="wrap">
+  <div class="head"><div><p class="eyebrow">Проверенные рядом</p><h2 style="margin-top:8px">Все специалисты для питомца — в одном месте</h2></div></div>
+  <div class="partners">
+    <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z"/></svg></div><h3>Ветеринары</h3><p>Осмотры по плану и запись в одно касание</p></div>
+    <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><h3>Грумеры</h3><p>Бережный первый груминг и скидки подписчикам</p></div>
+    <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg></div><h3>Передержки</h3><p>Где оставить щенка на время поездки</p></div>
+    <div class="card pt"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 21v-2a5 5 0 015-5h4a5 5 0 015 5v2"/></svg></div><h3>Кинологи</h3><p>Воспитание и социализация — особенно в первый год</p></div>
+  </div>
+</div></section>
+
+<section id="plans"><div class="wrap">
+  <div class="head"><div><p class="eyebrow">Тарифы</p><h2 style="margin-top:8px">Выберите, как начать</h2><p class="muted" style="margin-top:8px">Тариф зависит от возраста питомца — как в приложении</p></div><div class="bill" role="group" aria-label="Период оплаты"><button type="button" class="on" data-bill="year">На год</button><button type="button" data-bill="month">По месяцам</button></div></div>
+  <div class="plans">
+    <div class="card plan">
+      <h3>Базовый</h3>
+      <div class="price">0 ₽</div>
+      <ul class="ticks"><li>План по виду, породе и возрасту</li><li>План от вашего заводчика, если он в PetPass</li><li>Напоминания и дневник: вес, прививки, заметки</li></ul>
+      <button class="btn btn-ghost btn-wide" data-buy="free">Начать бесплатно</button>
+    </div>
+    <div class="plan main">
+      <span class="pbadge">Для щенков и котят до года</span>
+      <h3>Первый год</h3>
+      <div class="price"><span id="planPrice">7 900 ₽</span> <small id="planPer">/ год</small></div>
+      <p class="muted" id="planNote">4 месяца в подарок по сравнению с помесячной оплатой</p>
+      <ul class="ticks"><li>Всё из «Базового»</li><li>Осмотр у проверенного ветеринара со скидкой 15%</li><li>Скидки у ветеринаров, грумеров и других партнёров</li><li>Приоритетная запись в свободные часы</li><li>Первый месяц — бесплатно от заводчика</li></ul>
+      <div class="payback"><b>Дешевле, чем по месяцам:</b> 7 900 ₽ вместо 11 880 ₽ — плюс осмотр −15% и скидки партнёров весь год.</div>
+      <button class="btn btn-primary btn-wide" data-buy="year" id="planBtn">Оформить за 7 900 ₽</button>
+    </div>
+    <div class="card plan">
+      <h3>Забота</h3>
+      <div class="price"><span id="carePrice">4 900 ₽</span> <small id="carePer">/ год</small></div>
+      <p class="muted">Для собак и кошек старше года</p>
+      <ul class="ticks"><li>Всё из «Базового»</li><li>Ежегодный чек-ап или прививка у проверенного ветеринара</li><li>Скидки у ветеринаров, грумеров и других партнёров</li></ul>
+      <button class="btn btn-ghost btn-wide" data-buy="care" id="careBtn">Оформить за 4 900 ₽</button>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><div><p class="eyebrow">Вопросы</p><h2 style="margin-top:8px">Коротко о главном</h2></div></div>
+  <div class="faq">
+    <details><summary>Когда начнётся сервис?</summary><p>Пилот стартует в Санкт-Петербурге в ноябре 2026. Забронировавшие получат доступ первыми.</p></details>
+    <details><summary>Питомец не из питомника или заводчик не в PetPass?</summary><p>Заведите карточку сами — план ухода построится по виду, породе и дате рождения. Заводчика тоже можем пригласить.</p></details>
+    <details><summary>Подходит для взрослого питомца или кошки?</summary><p>Да. Для собак и кошек старше года — тариф «Забота»: ежегодный чек-ап или прививка и скидки у партнёров. Тариф «Первый год» — для щенков и котят: в первый год больше всего визитов и вопросов.</p></details>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="final">
+    <div><h2>Питомец дома? Заботьтесь о нём по плану</h2><p>Мест в пилоте немного — бронь сохраняет цену пилота.</p></div>
+    <button class="btn" data-buy="year">Забронировать место</button>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap">PetPass · проект Стартап Академии Сколково, 2026 · Связаться: <a href="https://t.me/curly_zzoe" target="_blank" rel="noopener" style="color:inherit">Telegram @curly_zzoe</a></div></footer>
+
+<div class="dock"><div class="pill"><span>Подписка — от 490 ₽/мес</span><button class="btn btn-primary" data-buy="year">Забронировать</button></div></div>
+
+<div class="sheet-bg" id="sheet" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-head"><div><p class="eyebrow">Бронь в пилоте</p><h3 id="sheetTitle" style="font-size:26px;margin-top:6px">Тариф «Первый год»</h3></div><button class="x" id="closeSheet" aria-label="Закрыть">×</button></div>
+    <div class="sum"><span id="sumName">PetPass «Первый год», 12 месяцев</span><span id="sumPrice">7 900 ₽</span></div>
+    <p class="muted">Пилот стартует в Санкт-Петербурге. Сейчас мы проверяем спрос, поэтому оплату не принимаем.</p>
+    <p style="margin-top:12px">Хотите место в пилоте? Напишите основательнице PetPass в Telegram — мы свяжемся с вами первыми и пришлём ссылку на оплату, когда откроем подписку.</p>
+    <a class="btn btn-primary btn-wide" style="margin-top:20px;text-decoration:none" href="https://t.me/curly_zzoe" target="_blank" rel="noopener">Написать в Telegram</a>
+    <button class="btn btn-ghost btn-wide" style="margin-top:10px" id="okSheet">Закрыть</button>
+  </div>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const PLANS={year:["PetPass «Первый год», 12 месяцев","7 900 ₽","Тариф «Первый год»"],month:["PetPass «Первый год», помесячно","990 ₽ / мес","Тариф «Первый год»"],care:["PetPass «Забота», 12 месяцев","4 900 ₽","Тариф «Забота»"],careMonth:["PetPass «Забота», помесячно","490 ₽ / мес","Тариф «Забота»"],free:["PetPass «Базовый»","0 ₽","Тариф «Базовый»"]};
+let billing="year",lastFocus=null;
+function openSheet(m){const p=PLANS[m];lastFocus=document.activeElement;$("#sumName").textContent=p[0];$("#sumPrice").textContent=p[1];$("#sheetTitle").textContent=p[2];$("#sheet").hidden=false;setTimeout(()=>$("#okSheet").focus(),30);}
+function closeSheet(){$("#sheet").hidden=true;if(lastFocus)lastFocus.focus();}
+document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.buy;openSheet(k==="year"?billing:k==="care"?(billing==="month"?"careMonth":"care"):k);}));
+document.querySelectorAll("[data-bill]").forEach(b=>b.addEventListener("click",()=>{
+  billing=b.dataset.bill;document.querySelectorAll("[data-bill]").forEach(x=>x.classList.toggle("on",x===b));const m=billing==="month";
+  $("#planPrice").textContent=m?"990 ₽":"7 900 ₽";$("#planPer").textContent=m?"/ мес":"/ год";
+  $("#planNote").textContent=m?"Можно отменить в любой момент. Скидка на осмотр — с третьего месяца":"4 месяца в подарок по сравнению с помесячной оплатой";
+  $("#planBtn").textContent=m?"Оформить за 990 ₽":"Оформить за 7 900 ₽";
+  $("#carePrice").textContent=m?"490 ₽":"4 900 ₽";$("#carePer").textContent=m?"/ мес":"/ год";$("#careBtn").textContent=m?"Оформить за 490 ₽":"Оформить за 4 900 ₽";}));
+$("#closeSheet").addEventListener("click",closeSheet);$("#okSheet").addEventListener("click",closeSheet);
+$("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#sheet").hidden)closeSheet();});
+</script>
+</body></html>
